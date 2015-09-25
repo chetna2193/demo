@@ -1,0 +1,18 @@
+https://developer.salesforce.com/page/Enforcing_CRUD_and_FLS
+-----------------------------------------------------------------------------------------------------
+if (!Schema.sObjectType.Account.fields.Name.isCreateable())
+{
+         ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL,'Insufficient access'));
+
+         return null;
+        }
+------------------------------------------------------------------------------------------------------
+if (!Lead.sObjectType.getDescribe().isDeletable())
+{
+        ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.FATAL,'Insufficient access'));
+        return null;
+ }
+-------------------------------------------------------------------------------------------------------
+ if (Schema.sObjectType.Deal.isAccessible())
+   if (Schema.sObjectType.User.isUpdateable())
+  if (Schema.sObjectType.Opportunity.isAccessible() && Schema.sObjectType.Payment__c.isAccessible())

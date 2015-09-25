@@ -1,0 +1,17 @@
+CRUD and FLS
+--------------------------------------------IN VF------------------------------------------------------------------------------
+<!-- This would normally bypass automatic FLS enforcement for accessibility-->
+<apex:outputText value="{!contactName}" rendered="{!$ObjectType.Contact.fields.Name.Accessible}" />
+................................................................................................................................
+
+<!-- stringToBecomeNewContactEmail is a generic string type so automatic FLS enforcement is not available -->
+<apex:inputText value="{!stringToBecomeNewContactEmail}" rendered="{!$ObjectType.Contact.fields.Email.Createable}" />
+..................................................................................................................................
+
+<!-- This would normally bypass automatic FLS enforcement for updates-->
+<apex:inputText value="{!contactEmail}" rendered="{!$ObjectType.Contact.fields.Email.Updateable}" />
+.................................................................................................................................
+
+<!-- This isn't a particularly strong way to prevent access to a controller method.The below should only be viewed as an example -->
+<apex:commandButton action="{!CustomDelete}" rendered="{!$ObjectType.Contact.Deletable}" />
+..................................................................................................................................
